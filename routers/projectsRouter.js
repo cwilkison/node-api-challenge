@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
     })
     .catch(err => {
         console.log(err)
-        res.status.json({ errorMessage: "Error retreiving the project"});
+        res.status(500).json({ errorMessage: "Error retreiving the project"});
     })
 });
 
@@ -22,19 +22,19 @@ router.get('/:id', (req, res) => {
     })
     .catch(err => {
         console.log(err)
-        res.status.json({ errorMessage: "Error retreiving the project"});
+        res.status(500).json({ errorMessage: "Error retreiving the project"});
     })
 });
 
 router.get('/:id/actions', (req, res) => {
     const id = req.params.id;
-    Projects.get(id)
+    Projects.getProjectActions(id)
     .then(project => {
         res.status(200).json(project);
     })
     .catch(err => {
         console.log(err)
-        res.status.json({ errorMessage: "Error retreiving the project"});
+        res.status(500).json({ errorMessage: "Error retreiving the project"});
     })
 });
 
